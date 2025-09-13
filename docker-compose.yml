@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  rag-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag_telegram_bot
+    env_file:
+      - .env # Загрузка переменных окружения из файла .env
+    # environment: # Эти переменные теперь лучше получать из .env файла
+    #   - FAISS_INDEX_PATH=/app/index/knowledge_index
+    #   - KNOWLEDGE_BASE_DIR=/app/knowledge_base
+    volumes:
+      - ./knowledge_base:/app/knowledge_base # Монтируем папку с базой знаний
+      - ./index:/app/index                 # Монтируем папку для FAISS индекса
+      - ./hf_cache:/root/.cache/huggingface # Монтируем папку для кеша Hugging Face (для эмбеддингов)
+    ports:
+      - "8000:8000" # Если ваш бот будет запускать веб-сервер, например, для Telegram Webhooks (сейчас не используется, но может пригодиться)
+    restart: unless-stopped
+
+# Опционально: сервис для запуска FAISS, если бы это была отдельная база данных
+# В вашем случае FAISS работает локально внутри контейнера бота, поэтому отдельный сервис не нужен.
