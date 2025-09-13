@@ -9,14 +9,7 @@
 
 # Запуск
 
-# 1. Создать индекс
-docker-compose run rag-bot python create_index.py
-
-# 2. Запустить Telegram бота
-docker-compose up -d
-
-# 3. Проверить логи
-docker-compose logs -f
+docker-compose up --build
 
 
 ## Собираем образ
@@ -29,5 +22,3 @@ docker-compose run rag-bot python create_index.py
 docker-compose up
 
 
-
-какие то проблемы были с совместимостью langchain и  HuggingFaceEmbeddings (ничего не понятно в общем), ну аи посоветовал вообще без нее 
