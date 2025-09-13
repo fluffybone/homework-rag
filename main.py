@@ -187,10 +187,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     try:
         retriever = vector_store.as_retriever()
         
-        # Поиск релевантных документов
         relevant_docs = retriever.invoke(user_question)
 
-        # Здесь мы не используем фильтрацию чанков, т.к. фильтрация файлов происходит на этапе индексации.
         context_str = format_docs(relevant_docs)
         logger.debug(f"Найденный контекст:\n{context_str}")
         

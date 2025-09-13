@@ -7,16 +7,8 @@
 6) создание файда `terms_map.json`
 
 
-# Запуск
-
-docker-compose up --build
-
-
 ## Собираем образ
 docker-compose build
-
-## Создаем векторный индекс
-docker-compose run rag-bot python create_index.py
 
 ## Запускаем бота
 docker-compose up
