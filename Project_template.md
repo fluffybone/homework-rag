@@ -1,11 +1,7 @@
-1) установить Питон
-2) py -m venv .venv
-3) . .venv\Scripts\Activate.ps1
-4) pip install langchain faiss-cpu 
 
-5) создание папки `knowledge_base` 
-6) создание файда `terms_map.json`
-
+## Добавляем данные
+1) создание папки `knowledge_base` - с нашей базой данных
+2) создание файда `terms_map.json`- ключевые замененные слова
 
 ## Собираем образ
 docker-compose build
